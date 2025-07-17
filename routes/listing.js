@@ -3,7 +3,7 @@ const router=express.Router();
 const mongoose=require("mongoose");
 
 const Listing=require("../models/listing.js");
-const wrapAsync=require("../utils/WrapAsync.js");
+const wrapAsync=require("../utils/wrapAsync.js");
 const ExpressError=require("../utils/ExpressError.js")
 const Review=require("../models/review.js");
 const passport=require("passport");
