@@ -1,0 +1,98 @@
+<% layout("/boilerplate") %>
+
+<style>
+    #filters{
+        display:flex;
+        flex-wrap:wrap;
+        margin-left: 1rem;
+        margin-bottom:1rem;
+    }
+
+    .filter{
+        margin-right:1rem;
+        text-align:center;
+        opacity:0.7
+    }
+
+    .filter:hover{
+        opacity:1;
+        transform:scale(1.05)
+    }
+
+    .tax-info{
+        display:none;
+    }
+
+    .tax-switch{
+        border:2px solid rgb(0, 0, 0,0.4);
+        border-radius: 7px;
+        padding:5px;
+        align-self:center;
+        font-size:1.4rem;
+        position:relative;
+        margin-left: 61rem;;
+    }
+
+    .tax-switch:hover{
+        border:2px solid rgb(0, 0, 0,1);
+    }
+</style>
+
+<body>
+    <!-- <h2> Main listing page</h2> -->
+    <div id="filters">
+        <div class="filter"><i class="fa-solid fa-fire"></i><br>Trending</div>
+        <div class="filter"><i class="fa-solid fa-mountain"></i><br>Mountain</div>
+        <div class="filter"><i class="fa-solid fa-bed"></i><br>Rooms</div>
+        <div class="filter"><i class="fa-solid fa-umbrella-beach"></i><br>Beach</div>
+        <div class="tax-switch">
+            <div class="form-check-reverse form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+                <label class="form-check-label" for="switchCheckDefault">Display taxes</label>
+              </div>
+        </div>
+    </div>
+
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1" >
+        <% for (data of allListing){  %>
+            <!-- <h3>Listings:</h3> Will add counting here-->
+
+            <div class="card listing-card" style="width: 18rem;">
+                <a href="/listing/<%=data._id%>" class="anchor">
+                    <img src="<%=data.image.url%>" class="card-img-top" alt="site-Image">
+                    <div class="card-img-overlay"></div>
+                    <div class="card-body">
+                            <b><%=data.title%></b><br>
+                            <!-- <b>Description:</b> <%=data.description%><br> -->
+                            <b>Price:</b> <%=(data.price)%>/night <i class="tax-info">&nbsp +18% gst</i>
+
+                            <br>
+                            <!-- .toLocaleString('en-IN') -->
+                            <!-- <b>Location:</b> <%=data.location%><br>
+                            <b>Country:</b> <%=data.country%><br><br> -->
+                    </div>
+                </a>
+            </div>
+            <%}%>
+        </div>
+
+
+
+</body>
+
+
+<script>
+    let priceToggle=document.getElementById("switchCheckDefault");
+    priceToggle.addEventListener("click",()=>{
+        let taxInfo=document.getElementsByClassName("tax-info");
+        for(info of taxInfo){
+            if(info.style.display!="inline"){
+                info.style.display="inline"
+            }
+            else{
+                info.style.display="none";
+            }
+        }
+        
+    })
+</script>

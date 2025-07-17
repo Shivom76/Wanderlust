@@ -1,0 +1,49 @@
+<% layout("boilerplate.ejs") %>
+<head>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+        <div class="col-8 offset-2">
+            <div class="heading">
+                <h2>Edit the listing</h2>
+            </div>
+            <form method="post" action="/listing/<%=data._id%>?_method=put"  novalidate class="needs-validation" enctype="multipart/form-data">
+            <div>
+                <b><%=data.title%></b>
+            </div><br>
+
+            <div class="mb-3">
+                <label for="listing[description]" class="form-label">Description:</label><br>
+                <textarea required name="listing[description]"  required class="form-control"></textarea>
+            </div>
+            <div class="valid-feedback">Please enter description</div>
+            <div class="previewDiv">
+                Previous Image:<br>
+                <img src="<%=originalImageUrl%>">
+            </div>
+            <div class="mb-3">
+                <label for="listing[image]" class="form-label">Image:</label><br>
+                <input name="listing[image]" class="form-control" type="file" value=<%=data.image%>>
+            </div>
+
+            <div class="mb-3">
+                <label for="listing[price]" class="form-label">Price:</label><br>
+                <input name="listing[price]" type="number"class="form-control" required value=<%=data.price%>>
+            </div>
+
+            <div class="mb-3">
+                <label for="listing[Location]" class="form-label">Location:</label><br>
+                <input name="listing[location]" value=<%=data.location%> required class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="listing[country]" class="form-label">Country:</label><br>
+                <input name="listing[country]" value=<%=data.country%> required class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-dark mb-3">Edit</button>
+    </div>
+    </div>    
+    </form>
+    <script src="../../script.js"></script>
+</body>

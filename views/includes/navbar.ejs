@@ -1,0 +1,61 @@
+<style>
+  .btn-search{
+    background-color:rgb(235, 16, 16);
+    color:white;
+    border-radius: 25px;;
+  }
+
+  .btn-search:hover{
+    background-color:rgb(235, 16, 16);
+    color:white;
+  }
+
+  .searchBar{
+    border-radius: 25px;
+    padding:0 10px 0 20px;
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom sticky-top mb-3">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/listing"><i class="fa-solid fa-compass"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+        <div class="navbar-nav">
+          <a class="nav-link" href="/listing">Explore</a>
+        </div>
+
+        <div class="nav-link ms-auto">
+          <form class="d-flex" role="search">
+          <input class="form-control me-2 searchBar" type="search" placeholder="Search" aria-label="Search"/>
+          <button class="btn btn-search" type="submit">Search</button>
+        </form>
+      </div>
+
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="/listing/new">Add new Listing</a>
+          <%if(!currUser){ %>
+            <a href="/signup" class="nav-link"><b>Signup</b></a>
+            <a href="/login" class="nav-link"><b>Login</b></a>
+          <%}%>
+
+          <%if(currUser){ %>
+            <a href="/logout" class="nav-link"><b>Logout</b></a>
+          <%}%>
+        </div>
+      </div>
+    </div>
+  </nav>
+<!-- 
+<script>
+
+  let searchBar=document.getElementsByClassName("searchBar")
+  let anchors=document.querySelectorAll("a")
+  for(a of  anchors){
+    console.log(a)
+  }
+
+</script> -->
